@@ -22,26 +22,10 @@ public class CurrencyServiceImpl implements CurrencyService{
     @Autowired
     CurrencyRepository currencyRepository;
 
-    public List<Currency> getAll() {
-        return currencyRepository.findAll();
-    }
-
-
     public Currency findById(Long id) {
         Currency currency = currencyRepository.findOne(id);
         if(currency==null) throw new NotFoundException(id.toString(),"Currency");
         return currency;
     }
-    public Currency edit(Long id, String name) {
-        Currency currency = findById(id);
-        currency.setName(name);
-        return currencyRepository.save(currency);
-    }
-    public Currency create(String name) {
-        Currency currency = new Currency(name);
-        return currencyRepository.save(currency);
-    }
-    public void delete(Long id) {
-        currencyRepository.delete(id);
-    }
+
 }
