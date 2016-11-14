@@ -35,7 +35,7 @@ Se puede filtrar por los atributos solicitados en la especificación, de la sigu
 
 Si un atributo no va en el filtro directamente no se lo tiene en cuenta. Esto se realizó utilizando Specifications.
 
-Además del filtrado la respuesta del listado también está paginado y se puede paginar, mediante la utilización parámetros específicos. Por ejemplo:
+Además del filtrado la respuesta del listado también se puede paginar, mediante la utilización parámetros específicos. Por ejemplo:
 
 > curl 'localhost:8080/menu/?fromHour=12&fromMinute=20&toHour=16&toMinute=00&fromValidDate=2016-01-01&toValidDate=2016-06-30&page=1&size=1&sort=fromHour,desc'
 
