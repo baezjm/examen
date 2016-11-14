@@ -7,6 +7,7 @@ import examen.specifications.impl.DaySpecification;
 import examen.specifications.FromHourAndMinuteSpecification;
 import examen.specifications.ToHourAndMinuteSpecification;
 import examen.specifications.ValidDateSpecification;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,7 +34,18 @@ public class MenuController{
     @Autowired
     MenuService menuService;
 
+
+    @ApiOperation(value = "/", nickname = "list")
     @RequestMapping(value = "/", method = RequestMethod.GET)
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "day", value = "Filter for day disponibility menu", dataType = "string", paramType = "query")
+    })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Menu.class),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Failure")})
     public Page<Menu> list(FromHourAndMinuteSpecification fromHourAndMinuteSpecification, ToHourAndMinuteSpecification toHourAndMinuteSpecification, ValidDateSpecification validDateSpecification,
                            @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "day", required = false) String day) {
         return menuService.listAllByPageAndSpecification(Specifications.where(fromHourAndMinuteSpecification).and(toHourAndMinuteSpecification).and(validDateSpecification).and(day != null ? new DaySpecification(day):null),pageable);

@@ -1,6 +1,7 @@
 package examen.entity;
 
 import examen.dto.MenuDto;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -17,20 +18,25 @@ public class Menu {
     @Id
     @GeneratedValue
     @Column(name="id", nullable = false)
+    @ApiModelProperty(notes = "The id of menu", required = true)
     private Long id;
 
     @Column(name="name", nullable = false)
+    @ApiModelProperty(notes = "The name of menu", required = true)
     private String name;
 
     @Column(name="description", nullable = false)
+    @ApiModelProperty(notes = "The description of menu", required = true)
     private String description;
 
     @Digits(integer=5, fraction=2)
     @Column(name="price", nullable = false, precision = 7, scale = 2)
+    @ApiModelProperty(notes = "The price of menu", required = true)
     private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="currency")
+    @ApiModelProperty(notes = "The currency of menu", required = true)
     private Currency currency;
 
     @Temporal(TemporalType.DATE)
