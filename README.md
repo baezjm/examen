@@ -9,6 +9,8 @@ En la raíz del proyecto ejecutar
 > mvn spring-boot:run
 Esto compilará y ejecutara el plugin de Spring Boot
 
+También se puede clonar el proyecto desde este repositorio y levantarlo en intellij. Open y seleccionar el pom.xml del mismo.
+
 ## Probar servicios
 
 Ir a:
