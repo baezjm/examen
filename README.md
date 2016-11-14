@@ -28,3 +28,15 @@ Está hecho de forma que en este endpoint se devuelvan todos los menues, paginad
   - Repository : Capa de acceso a datos
   - Entity : Entidades de la aplicación
 
+## Listado
+
+Se puede filtrar por los atributos solicitados en la especificación, de la siguiente forma
+> curl 'localhost:8080/menu/?fromHour=12&fromMinute=20&toHour=16&toMinute=00&fromValidDate=2016-01-01&toValidDate=2016-06-30&day=monday'
+
+Si un atributo no va en el filtro directamente no se lo tiene en cuenta. Esto se realizó utilizando Specifications.
+
+## Librería Extra
+
+Para facilitar el desarrollo, se utilizó una librería que permite pasar por parámetros Specifications de Spring, la misma se podría desarrollar totalmente en el código ya que utiliza las mismas tecnologías. El proyecto se encuentra en el siguiente repositorio de github
+
+> https://github.com/tkaczmarzyk/specification-arg-resolver
