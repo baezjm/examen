@@ -35,6 +35,16 @@ Se puede filtrar por los atributos solicitados en la especificación, de la sigu
 
 Si un atributo no va en el filtro directamente no se lo tiene en cuenta. Esto se realizó utilizando Specifications.
 
+Además del filtrado la respuesta del listado también está paginado y se puede paginar, mediante la utilización parámetros específicos. Por ejemplo:
+
+> curl 'localhost:8080/menu/?fromHour=12&fromMinute=20&toHour=16&toMinute=00&fromValidDate=2016-01-01&toValidDate=2016-06-30&page=1&size=1&sort=fromHour,desc'
+
+## Documentación
+
+Se añadió a modo de prueba una pequeña documentación con swagger 2, no está completa, pero es únicamente para mostrar este agregado. Para acceder a la misma ir a:
+
+> http://localhost:8080/swagger-ui.html
+
 ## Librería Extra
 
 Para facilitar el desarrollo, se utilizó una librería que permite pasar por parámetros Specifications de Spring, la misma se podría desarrollar totalmente en el código ya que utiliza las mismas tecnologías. El proyecto se encuentra en el siguiente repositorio de github
